@@ -1,7 +1,26 @@
 name: CI
 on: push
 jobs:
-  test:
+  pre-test:
+    name: Check/Rustfmt/Clippy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - run: rustup component add clippy
+      - name: Check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: Rustfmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: -- --check
+      - name: Clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
