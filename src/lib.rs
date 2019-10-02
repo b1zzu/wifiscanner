@@ -82,6 +82,8 @@ pub fn scan() -> Result<Vec<Wifi>, Error> {
     use std::env;
     use std::process::Command;
 
+    let _x = 3.14;
+
     const PATH_ENV: &'static str = "PATH";
     let path_system = "/usr/sbin:/sbin";
     let path = env::var_os(PATH_ENV).map_or(path_system.to_string(), |v| {
