@@ -88,6 +88,11 @@ pub fn scan() -> Result<Vec<Wifi>, Error> {
         format!("{}:{}", v.to_string_lossy().into_owned(), path_system)
     });
 
+
+
+
+    
+
     let output = Command::new("iw")
         .env(PATH_ENV, path.clone())
         .arg("dev")
