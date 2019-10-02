@@ -94,7 +94,7 @@ pub fn scan() -> Result<Vec<Wifi>, Error> {
         .output()
         .map_err(|_| Error::CommandNotFound)?;
     let data = String::from_utf8_lossy(&output.stdout);
-    let interface = parse_iw_dev(&data)?;
+    interface = parse_iw_dev(&data)?;
 
     let output = Command::new("iw")
         .env(PATH_ENV, path)
